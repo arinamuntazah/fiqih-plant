@@ -1,0 +1,27 @@
+services:
+  wordpress:
+    image: wordpress:latest
+    restart: always
+    ports:
+      - 8000:80
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: root
+      WORDPRESS_DB_NAME: wordpress
+    volumes:
+      - ./wp-content/themes/fiqih-plant:/var/www/html/wp-content/themes/fiqih-plant
+      # Persist wp-content so plugins/uploads survive restarts (optional but recommended)
+      # - wp_content:/var/www/html/wp-content
+
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data: # wp_content:
