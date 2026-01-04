@@ -35,11 +35,11 @@ services:
       MYSQL_ROOT_PASSWORD: root
     volumes:
       - db_data:/var/lib/mysql
+      # Initialize database with the dump if the volume is empty
+      - ./init-db:/docker-entrypoint-initdb.d
     networks:
       - default
       - dokploy-network
-      # Initialize database with the dump if the volume is empty
-      - ./init-db:/docker-entrypoint-initdb.d
 
 volumes:
   db_data:
