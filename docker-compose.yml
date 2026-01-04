@@ -10,8 +10,8 @@ services:
       WORDPRESS_DB_PASSWORD: root
       WORDPRESS_DB_NAME: wordpress
       # Set these in Dokploy Environment Variables to the actual domain (e.g. https://example.com)
-      # WP_HOME: https://your-domain.com
-      # WP_SITEURL: https://your-domain.com
+      WP_HOME: https://fiqihplant.contraqs.cloud
+      WP_SITEURL: https://fiqihplant.contraqs.cloud
     volumes:
       # Mount the entire wp-content directory (themes, plugins, uploads)
       - ./wp-content:/var/www/html/wp-content
